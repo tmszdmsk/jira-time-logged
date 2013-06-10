@@ -1,10 +1,17 @@
-chrome.browserAction.setBadgeText({"text":"abc"});
+
 chrome.alarms.create("refresh",{"periodInMinutes":1/6, "delayInMinutes":1/60});
 chrome.alarms.onAlarm.addListener(function(alarm) {
-	parseLoggedTime();
+	parseLoggedTime(function(data){
+		var total = data.reduce(
+			function(curr,prev){
+				return {loggedWork: curr.loggedWork+prev.loggedWork};
+			},{loggedWork:0}).loggedWork;
+		var totalStr = Math.floor(total/60)+":"+pad(total%60,2);;
+		chrome.browserAction.setBadgeText({"text":totalStr});
+	});
 });
 
-function parseLoggedTime(){
+function parseLoggedTime(callback){
 	var startDate = new Date();
 	startDate.setUTCHours(0,0,0,0);
 	var endDate = new Date(); 
@@ -31,15 +38,9 @@ function parseLoggedTime(){
 					
 				}
 			});
-			console.log(logEntries);
-			var total = logEntries.reduce(
-				function(curr,prev){
-					return {loggedWork: curr.loggedWork+prev.loggedWork};
-				},{loggedWork:0}).loggedWork;
-			var totalStr = Math.floor(total/60)+":"+total%60;
-			chrome.browserAction.setBadgeText({"text":totalStr});
+			callback(logEntries);
 		}
-	);
+		);
 		}
 	});
 	
@@ -51,4 +52,8 @@ function loggedTimeInMinutes(loggedWork){
 	e = e.replace(/d/g, "*60*8");
 	e = e.replace(/ /g, "+");
 	return eval(e);
+}
+
+function pad (str, max) {
+	return (str+"").length < max ? pad("0" + str, max) : str;
 }
