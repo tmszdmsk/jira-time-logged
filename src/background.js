@@ -17,8 +17,8 @@ function parseLoggedTime(callback){
 	var endDate = new Date(); 
 	endDate.setDate(startDate.getDate()+1);
 	chrome.storage.local.get(function(data){
-		if(data.username && data.server){
-		$.get(data.server+"/activity?maxResults=99&streams=key+IS+UTC&streams=update-date+BETWEEN+"+startDate.getTime()+"+"+endDate.getTime()+"&streams=user+IS+"+data.username+"&issues=activity+IS+issue%3Aupdate&providers=issues&os_authType=basic",
+		if(data.username && data.server && data.key){
+		$.get(data.server+"/activity?maxResults=99&streams=key+IS+"+data.key+"&streams=update-date+BETWEEN+"+startDate.getTime()+"+"+endDate.getTime()+"&streams=user+IS+"+data.username+"&issues=activity+IS+issue%3Aupdate&providers=issues&os_authType=basic",
 		function(data) {
 			var $xml = $(data); 
 			var logEntries = [];
