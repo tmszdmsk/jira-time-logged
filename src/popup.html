@@ -1,69 +1,68 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <script src="background.js"></script>
-    <script src="jquery-2.0.2.js"></script>
-    <script src="popup.js"></script>
-  </head>
-  <style>
-  body{
-	width: 400px;
-	height: 200px;
-  }
- 
-  #hor-minimalist-a
-{
-	width: 100%;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	background: #fff;
-	border-collapse: collapse;
-	text-align: left;
-}
-#hor-minimalist-a th
-{
-	font-size: 14px;
-	font-weight: normal;
-	color: #039;
-	padding: 10px 8px;
-	border-bottom: 2px solid #6678b1;
-}
-#hor-minimalist-a td, #hor-minimalist-a td a
-{
-	text-decoration:none;
-	color: #669;
-	padding: 3px 8px 5px 8px;
-}
-#hor-minimalist-a tr td:last{
-	font-weight:bold;
-}
-#hor-minimalist-a tr.odd
-{
-	background: #eee;
-}
+    <head>
+        <title>Getting Started Extension's Popup</title>
+        <script src="jquery-2.0.2.js"></script>
+        <script src="popup.js"></script>
 
-#hor-minimalist-a tbody tr:hover td
-{
-	color: #009;
-}
+        <style>
+            body{
+                width: 400px;
+                height: 200px;
+            }
 
-#hor-minimalist-a tfoot
-{
-	border-top:2px solid #6678b1;
-	font-weight: bold;
-	font-size: 14px;
-	color: #039;
-}
-  </style>
-  <body>
-  <table id="hor-minimalist-a">
-	<thead><tr><th>Issue</th><th>Log date</th><th>Work logged</th></tr></thead>
-	<tbody></tbody>
-	
-	<tfoot><tr><td></td><td></td><td></td></tr></tfoot>
-  </table>
-  <div id="total-time-spent"></div>
-  </body>
+            #hor-minimalist-a
+            {
+                width: 100%;
+                font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+                font-size: 12px;
+                background: #fff;
+                border-collapse: collapse;
+                text-align: left;
+            }
+            #hor-minimalist-a th
+            {
+                font-size: 14px;
+                font-weight: normal;
+                color: #039;
+                padding: 10px 8px;
+                border-bottom: 2px solid #6678b1;
+            }
+            #hor-minimalist-a td, #hor-minimalist-a td a
+            {
+                text-decoration:none;
+                color: #669;
+                padding: 3px 8px 5px 8px;
+            }
+            #hor-minimalist-a tr td:last{
+                font-weight:bold;
+            }
+            #hor-minimalist-a tr.odd
+            {
+                background: #eee;
+            }
+
+            #hor-minimalist-a tbody tr:hover td
+            {
+                color: #009;
+            }
+
+            #hor-minimalist-a tfoot
+            {
+                border-top:2px solid #6678b1;
+                font-weight: bold;
+                font-size: 14px;
+                color: #039;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="hor-minimalist-a">
+            <thead><tr><th>Issue</th><th>Log date</th><th>Work logged</th></tr></thead>
+            <tbody></tbody>
+            <tfoot><tr><td></td><td></td><td></td></tr></tfoot>
+        </table>
+        <div id="total-time-spent"></div>
+    </body>
 </html>
 
