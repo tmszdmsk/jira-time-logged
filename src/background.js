@@ -25,7 +25,9 @@ function parseLoggedTime(callback){
 			var logEntries = [];
 			$xml.find("entry").each(function(){
 				var $this=$(this);
-				var matches = $this.find("content[type=html]").text().match(/.*<li>Logged '(.*)'<\/li>.*/);
+				var matchesMultipleChanges = $this.find("content[type=html]").text().match(/.*<li>Logged '(.*)'<\/li>.*/);
+				var matchesSingleChange = $this.find("title[type=html]").text().match(/.*logged '(.*)' on.*/);
+				var matches = matchesMultipleChanges ? matchesMultipleChanges : matchesSingleChange;
 				if(matches){
 					logEntries.push(
 						{
